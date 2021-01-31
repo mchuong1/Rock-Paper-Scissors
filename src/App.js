@@ -8,9 +8,11 @@ import RockPaperScissor from './components/RockPaperScissor'
 function App() {
   return (
     <div className="App">
-      <RockPaperScissor img={scissors}/>
-      <RockPaperScissor img={rock}/>
-      <RockPaperScissor img={paper}/>
+      <div className="Playground">
+        <RockPaperScissor img={scissors} type="scissors"/>
+        <RockPaperScissor img={rock} type="rock"/>
+        <RockPaperScissor img={paper} type="paper"/>
+      </div>
     </div>
   );
 }
