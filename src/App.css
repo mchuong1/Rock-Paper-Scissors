@@ -1,10 +1,20 @@
 body{
   background-color: darkblue;
+  height: 100vh;
+}
+#root{
   height: 100%;
 }
 
 .App {
   text-align: center;
+  height: 100%;
+}
+.Playground{
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .RockPaperScissor{
@@ -16,6 +26,14 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.RockPaperScissor:hover{
+  background-color: darkgoldenrod;
+  border: 10px solid yellow;
+  border-radius: 50%;
+  cursor: pointer;
+  height: 200px;
+  width: 200px;
 }
 
 .circle-image{
