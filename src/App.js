@@ -14,7 +14,7 @@ function App() {
   const [losses, setLosses] = useState(0)
   const [ties, setTies] = useState(0)
 
-  useEffect(()=> {decideWinner(playerChoice, computerChoice)},[playerChoice]) //what if player chooses same choice??
+  useEffect(()=> {decideWinner(playerChoice, computerChoice)},[playerChoice, computerChoice]) //what if player and computer chooses same choice??
 
   const decideWinner = (playerChoice, computerChoice) => {
     var player, computer = false
@@ -27,15 +27,15 @@ function App() {
       switch(playerChoice){
         case "Scissors": 
           computerChoice === "Rock" ? console.log(`Computer Smashes Player`): console.log(`Player Cuts Computer`)
-          computerChoice === "Rock" ? computer=true : player=false
+          computerChoice === "Rock" ? computer=true : player=true
           break
         case "Rock": 
           computerChoice === "Paper" ? console.log(`Computer Covers Player`) : console.log(`Player Smashes Computer`)
-          computerChoice === "Paper" ? computer=true : player=false
+          computerChoice === "Paper" ? computer=true : player=true
           break
         case "Paper": 
           computerChoice === "Scissors" ? console.log(`Computer Cuts Player`) : console.log(`Player Covers Computer`)
-          computerChoice === "Scissors" ? computer=true : player=false
+          computerChoice === "Scissors" ? computer=true : player=true
           break
         default: 
           console.log(`Error: Player: ${playerChoice} Computer: ${computerChoice}`)
