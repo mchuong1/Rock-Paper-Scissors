@@ -1,7 +1,3 @@
-import { useState } from "react";
-
-
-
 export default function Score(props) {
     return (
       <div className="Score">
