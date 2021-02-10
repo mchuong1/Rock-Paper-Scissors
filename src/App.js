@@ -2,9 +2,8 @@ import './App.css';
 import scissors from './img/scissors.png' 
 import rock from './img/rock.png'
 import paper from './img/paper.png'
-import RockPaperScissor from './components/RockPaperScissor'
 import Score from './components/Score'
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 function App() {
 
@@ -13,8 +12,8 @@ function App() {
   const [wins, setWins] = useState(0)
   const [losses, setLosses] = useState(0)
   const [ties, setTies] = useState(0)
-
-  useEffect(()=> {decideWinner(playerChoice, computerChoice)},[playerChoice, computerChoice]) //what if player and computer chooses same choice??
+  const choices = ["Rock", "Paper", "Scissors"]
+  const types = [rock, paper, scissors]
 
   const decideWinner = (playerChoice, computerChoice) => {
     var player, computer = false
@@ -45,16 +44,45 @@ function App() {
     if(computer) setLosses(losses+1)
   }
 
+  const RockPaperScissor = ({type}) => {
+    var image;
+    const setChoices = () =>{ 
+      let randomChoice = Math.floor(3 * Math.random())
+      setPlayerChoice(type)
+      setComputerChoice(choices[randomChoice])
+      decideWinner(type, choices[randomChoice])
+    }
+    switch(type){
+      case "Scissors": image = scissors;
+                       break;
+      case "Paper":    image = paper;
+                       break;
+      case "Rock":     image = rock; 
+                       break;
+      default:         image = rock;
+    }
+    return (
+      <div className="RockPaperScissor boxshadow">
+          <img alt={type} src={image} className="circle-image" onClick={setChoices}></img>
+      </div>
+    );
+  }
+
   return (
     <div className="App">
       <Score wins={wins} losses={losses} ties={ties}/>
+      <h1>Computer</h1>
       <div className="Playground">
-        <RockPaperScissor img={rock} type="Rock" setPlayerChoice={setPlayerChoice} setComputerChoice={setComputerChoice}/>
-        <RockPaperScissor img={paper} type="Paper" setPlayerChoice={setPlayerChoice} setComputerChoice={setComputerChoice}/>
-        <RockPaperScissor img={scissors} type="Scissors" setPlayerChoice={setPlayerChoice} setComputerChoice={setComputerChoice}/>
+        <RockPaperScissor type={computerChoice} className="computer"/>
+      </div>
+      <div className="Playground">
+        <RockPaperScissor type="Rock"/>
+        <RockPaperScissor type="Paper"/>
+        <RockPaperScissor type="Scissors"/>
       </div>
     </div>
   );
 }
 
 export default App;
+
