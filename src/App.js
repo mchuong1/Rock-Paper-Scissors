@@ -3,6 +3,7 @@ import scissors from './img/scissors.png'
 import rock from './img/rock.png'
 import paper from './img/paper.png'
 import Score from './components/Score'
+import Roulette from './components/Roulette'
 import { useState } from 'react';
 
 function App() {
@@ -13,7 +14,6 @@ function App() {
   const [losses, setLosses] = useState(0)
   const [ties, setTies] = useState(0)
   const choices = ["Rock", "Paper", "Scissors"]
-  const types = [rock, paper, scissors]
 
   const decideWinner = (playerChoice, computerChoice) => {
     var player, computer = false
@@ -73,7 +73,8 @@ function App() {
       <Score wins={wins} losses={losses} ties={ties}/>
       <h1>Computer</h1>
       <div className="Playground">
-        <RockPaperScissor type={computerChoice} className="computer"/>
+        <Roulette />
+        {/* <RockPaperScissor type={computerChoice} className="computer"/> */}
       </div>
       <div className="Playground">
         <RockPaperScissor type="Rock"/>
